@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using Microsoft.EntityFrameworkCore;
+using userAspNet.Models;
+
 namespace userAspNet
 {
     public class Startup
@@ -25,6 +28,9 @@ namespace userAspNet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<EntidadContext>(opt =>
+               opt.UseInMemoryDatabase("EntidadList"));
+
             services.AddControllers();
         }
 
